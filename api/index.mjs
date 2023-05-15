@@ -1,11 +1,9 @@
 import express from 'express'
-import { syllableCount } from "syllable-count-english";
-import cors from 'cors'
-const corsConfig = { origin: ['http://localhost:3000'] }
+import { syllableCount } from 'syllable-count-english'
 const app = express()
 const port = 3000
 
-app.get('/', cors(corsConfig), async (req, res) => {
+app.get('/', async (req, res) => {
   const { text } = req.query
 
   console.log('-------------')
