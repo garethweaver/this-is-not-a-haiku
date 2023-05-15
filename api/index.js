@@ -6,15 +6,15 @@ const app = express()
 const port = 3000
 
 app.get('/', cors(corsConfig), async (req, res) => {
-  const { haiku } = req.query
+  const { text } = req.query
 
   console.log('-------------')
 
-  if (!haiku) {
+  if (!text) {
     return res.send('You must send a haiku.')
   }
 
-  const lines = haiku?.trim().split(/\r?\n/)
+  const lines = text?.trim().split(/\r?\n/)
   let errored = false
   let message = ''
 
