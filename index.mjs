@@ -9,7 +9,10 @@ app.get('/', async (req, res) => {
   console.log('-------------')
 
   if (!text) {
-    return res.send('You must send a haiku.')
+    return res.send({
+      response_type: 'in_channel',
+      text: 'You must send a haiku.',
+    })
   }
 
   const lines = text?.trim().split(/\r?\n/)
@@ -38,8 +41,10 @@ app.get('/', async (req, res) => {
     console.log('INVALID')
     message += `\n⚠️ This is not a valid haiku! ⚠️`
   }
-
-  return res.send(`${message}`)
+  return res.send({
+    response_type: 'in_channel',
+    text: message,
+  })
 })
 
 app.listen(port, () => {
