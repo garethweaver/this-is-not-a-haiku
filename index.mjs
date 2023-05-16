@@ -27,6 +27,8 @@ app.get('/', async (req, res) => {
 
     lines.forEach((line, idx) => {
       console.log(line, syllableCount(line))
+      // remove weird commas
+      line = line.replace('’', '\'')
       const s = syllableCount(line)
       const allowed = idx !== 1 ? 5 : 7
       const isValid = s === allowed
